@@ -10,4 +10,7 @@ void ShiftRow(unsigned char state[4][4]);
 void MixColumn(unsigned char state[4][4]);
 unsigned char Xtime(unsigned char,unsigned char);
 void RoundKeyAddition(unsigned char [4][4],unsigned char [4][4]);
+
+void char_bit(unsigned char char_array[4][4],unsigned char bit_array[128]);
+void bit_char(unsigned char bit_array[128],unsigned char char_array[4][4]);
 #endif //for #ifndef _ENCRYPT_H

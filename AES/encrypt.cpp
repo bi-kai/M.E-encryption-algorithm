@@ -197,3 +197,42 @@ void RoundKeyAddition(unsigned char state[4][4],unsigned char temp[4][4])
 		for(j=0; j<4; j++)
 			state[i][j]^=temp[i][j];			//状态矩阵元素与轮密钥矩阵对应元素异或
 }
+
+void char_bit(unsigned char char_array[4][4],unsigned char bit_array[128]){//类小端模式
+	
+	char i=0,j=0,k=0;
+	int counter=0;
+	
+	for (i=0;i<4;i++)
+	{
+		for (j=0;j<4;j++)
+		{
+			for(k=7;k>=0;k--){
+				bit_array[counter]=(char_array[i][j]& (0x01<<k))?1:0; 
+				counter++;
+			}
+		}
+	}
+	
+}
+
+
+void bit_char(unsigned char bit_array[128],unsigned char char_array[4][4]){
+	
+	char i=0,j=0;
+	int counter=0;
+	
+	for (i=0;i<4;i++)
+	{
+		for (j=0;j<4;j++)
+		{
+			char_array[i][j]=0;//清零
+			for (counter=(i*4*8+j*8);counter<(i*4*8+j*8+8);counter++)
+			{
+				char_array[i][j]|=bit_array[counter]<<(7-counter%8);
+			}
+		}
+	}
+	
+}
+
