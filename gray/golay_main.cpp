@@ -1,4 +1,3 @@
- 
 #include <iostream>
 #include "FEC.h"
 using namespace std;
